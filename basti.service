@@ -1,0 +1,17 @@
+[Unit]
+Description=Bastillion Service
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/usr/local/Bastillion-jetty
+Environment="JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/"
+ExecStart=/usr/local/Bastillion-jetty/startBastillion.sh
+Restart=on-failure
+RestartSec=8s
+#User=nobody
+LimitNOFILE=infinity
+
+[Install]
+WantedBy=multi-user.target
